@@ -10,7 +10,7 @@ function getComputerChoice(){
 
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
-        displayResult(`You: ${humanChoice}. Computer: ${computerChoice}. It's a draw!`);
+        displayResult(`You: ${humanChoice}. Computer: ${computerChoice}.`, "It's a draw!");
         return;
     }
     
@@ -22,19 +22,20 @@ function playRound(humanChoice, computerChoice) {
         
     if (winMap[humanChoice] === computerChoice) {
         humanScore++;
-        displayResult(`You: ${humanChoice}. Computer: ${computerChoice}. You win this round!`);
+        displayResult(`You: ${humanChoice}. Computer: ${computerChoice}.`, 'You win this round!');
     } else {
         computerScore++;
-        displayResult(`You: ${humanChoice}. Computer: ${computerChoice}. Computer wins this round!`);
+        displayResult(`You: ${humanChoice}. Computer: ${computerChoice}.`, 'Computer wins this round!');
     }
 
     updateScores();
     // Delay of 500ms (0.5 seconds) to see final results
     setTimeout(checkForWinner, 500); 
-  }
+}
 
-function displayResult(message) {
-    document.getElementById('result').textContent = message;
+function displayResult(result, resultMsg) {
+    document.getElementById('result').textContent = result;
+    document.getElementById('resultMsg').textContent = resultMsg;
 }
 
 function updateScores() {
